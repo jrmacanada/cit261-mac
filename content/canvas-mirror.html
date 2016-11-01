@@ -7,19 +7,25 @@
         padding: 0px;
       }
     </style>
-  </head> 
+  </head>
   <body>
     <canvas id="myCanvas" width="578" height="200"></canvas>
     <script>
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
 
-      // do cool things with the context
+      // translate context to center of canvas
+      context.translate(canvas.width / 2, canvas.height / 2);
+
+      // flip context horizontally
+      context.scale(-1, 1);
+
       context.font = '30pt Calibri';
+      context.textAlign = 'center';
       context.fillStyle = 'green';
-      context.fillText('Canvas Demo!', 150, 100);
+      context.fillText('Canvas Demo', 0, 0);
     </script>
-    <p>Click here to reverse image <a href="/canvas-mirror.html" title="Go Back">Mirror Text</a></p>
+    <p>Click here to reverse image <a href="/canvas-mirror.html" title="Go Back">Straight Text</a></p>
     <p>Return to HTML5 demo page, click to <a href="/html-page10.html" title="Go Back">GO BACK</a></p>
   </body>
-</html>
+</html>   
