@@ -40,15 +40,23 @@ function changeImage() {
     if (image.src.match("spring")) {
         image.src = "../images/season-summer.png";
         document.getElementById("demo").innerHTML = "SUMMER";
+        document.getElementById("demo").style.color = "gold";
+        document.getElementById("demo").style.fontSize = "larger";
     } else if (image.src.match("summer")) {
         image.src = "../images/season-fall.png";
         document.getElementById("demo").innerHTML = "FALL";
+        document.getElementById("demo").style.color = "brown";
+        document.getElementById("demo").style.fontSize = "larger";
     } else if (image.src.match("winter")) {
         image.src = "../images/season-spring.png";
         document.getElementById("demo").innerHTML = "SPRING";
+        document.getElementById("demo").style.color = "green";
+        document.getElementById("demo").style.fontSize = "larger";
     } else {
         image.src = "../images/season-winter.png";
         document.getElementById("demo").innerHTML = "WINTER";
+        document.getElementById("demo").style.color = "blue";
+        document.getElementById("demo").style.fontSize = "larger";
     }
 }
 </script>
