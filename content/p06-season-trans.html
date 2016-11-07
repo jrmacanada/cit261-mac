@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Image Transition Function</h1>
+
+<img id="myImage" onclick="changeImage()" src="../images/season-winter.png" width="90" height="245">
+
+<p>Click the image to transition through the year.</p>
+
+<script>
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("seasons")) {
+        image.src = "../images/season-winter.png";
+    } else {
+        image.src = "../images/season-spring.png";
+    }
+}
+</script>
+
+</body>
+</html>
+
