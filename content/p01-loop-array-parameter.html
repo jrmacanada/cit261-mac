@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Loop-Array-Parameters Function</h1>
+<p>User creates multi-number array with a DO-WHILE loop, which loads as function parameters (arguments) where an incremental loop adds them up.</p>
+
+<p id="demo"></p>
+
+<script>
+var numcall = []; // create empty array
+var temp = '';
+do {
+    temp = prompt("Enter a number to build an array.\nPress cancel or leave empty to finish.");
+    if (temp === "" || temp === null) {
+        break;
+    } else {
+        var arrNum = parseFloat(temp);  // convert string input to number
+        numcall.push(arrNum);   // populate the array
+    }
+} while (1);
+
+var div = document.createElement('div');
+for (var i = 0, l = numcall.length; i < l; ++i) {
+    div.innerHTML += numcall[i] + "<br />";
+}
+
+function sumAll() {
+    var i, sum = 0;
+    for(i = 0; i < numcall.length; i++) {
+        sum += numcall[i];
+    }
+    return sum;
+}
+document.getElementById("demo").innerHTML = "Sum of enteries = " +
+sumAll(numcall).toFixed(3) + "<br />" + "List of inputs (below):";
+
+document.body.appendChild(div);
+
+</script>
+
+<p>Refresh browser to input NEW array.</p>
+<p>Return to JavaScript Code-1 page, click to <a href="../content/p01--js-code.html" title="Go Back">GO BACK</a></p>
+</body>
+</html>
