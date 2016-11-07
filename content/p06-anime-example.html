@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seasons Animation Example</title>
+    <style>
+    div.anime p {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+    </style>
+  </head>
+<body>
+
+<h1>Image/TEXT Animation Example</h1>
+<p>Uses CSS to MOVE image.</p>
+
+<p id="demo"></p>
+<div class="anime">
+    <p>
+    <img id="myImage" onclick="changeImage()" src="../images/seasons-all-four.jpg" width="350" height="245" alt="seasonal views">
+    </p>
+</div>
+<p>Click on the image to cycle through the seasons.</p>
+
+<script>
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("spring")) {
+        image.src = "../images/season-summer.png";
+        document.getElementById("demo").innerHTML = "SUMMER";
+    } else if (image.src.match("summer")) {
+        image.src = "../images/season-fall.png";
+        document.getElementById("demo").innerHTML = "FALL";
+    } else if (image.src.match("winter")) {
+        image.src = "../images/season-spring.png";
+        document.getElementById("demo").innerHTML = "SPRING";
+    } else {
+        image.src = "../images/season-winter.png";
+        document.getElementById("demo").innerHTML = "WINTER";
+    }
+}
+</script>
+
+<p>Return to CSS3 Transitions and Animations page, click to <a href="../content/p06--css3-animation.html" title="Go Back">GO BACK</a></p>
+
+</body>
+</html>
+
