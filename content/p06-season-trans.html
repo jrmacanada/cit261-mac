@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>p06-season-transition-example</title>
+    <style>
+    * {
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+          -ms-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+    
+    /*Enlarge image on hover*/
+    .grow img {
+      width:  90px;
+      height: 245px;
+      
+
+      -webkit-transition: all 1s ease;
+         -moz-transition: all 1s ease;
+           -o-transition: all 1s ease;
+          -ms-transition: all 1s ease;
+              transition: all 1s ease;
+    }
+
+    .grow img:hover {
+      width:  180px;
+      height: 490px;
+    }
+    </style>
+  </head>
 <body>
 
-<h1>Image Transition Function</h1>
+<h1>Image Transition Example</h1>
+<p>Uses CSS to enlarge image.</p>
+<p>Hover over the image and it will grow.</p>
 
-<img id="myImage" onclick="changeImage()" src="../images/season-winter.png" width="90" height="245">
-
-<p>Click the image to transition through the year.</p>
+<div class="grow">
+    <img id="myImage" onclick="changeImage()" src="../images/season-winter.png" width="90" height="245" alt="seasonal views">
+</div>
+<p>Click on the image to cycle through the seasons.</p>
 
 <script>
 function changeImage() {
     var image = document.getElementById('myImage');
-    if (image.src.match("seasons")) {
+    if (image.src.match("spring")) {
+        image.src = "../images/season-summer.png";
+    } else if (image.src.match("summer")) {
+        image.src = "../images/season-fall.png";
+    } else if (image.src.match("fall")) {
         image.src = "../images/season-winter.png";
     } else {
         image.src = "../images/season-spring.png";
