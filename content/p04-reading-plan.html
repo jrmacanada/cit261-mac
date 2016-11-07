@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
+<!-- Edited Blankenship example code -->
     <head>
         <meta charset="utf-8">
-        <title>cit261</title>
+        <title>Scripture Reading Planner</title>
         <style>
             html, body {
                 font-family: 'Arial', sans-serif;
             }
-            #shopping_cart {
+            #calendar {
                 background: #CFD8DC;
                 min-width: 200px;
                 min-height: 200px;
                 padding: 1em;
                 margin: 1em;
             }
-            #add_to_shopping_cart {
+            #add_to_calendar {
                 margin: 1em;
             }
-            #add_to_shopping_cart fieldset {
+            #add_to_calendar fieldset {
                 margin: 1em 0;
             }
             #storage_code_snippet {
@@ -26,33 +27,33 @@
         </style>
     </head>
     <body>
-        <h1>Local Storage</h1>
-        <div id="shopping_cart">
-            <h3>Shopping Cart</h3>
-            <table id="shopping_cart_table" border="1">
+        <h1>Scripture Reading Planner</h1>
+        <div id="calendar">
+            <h3>Calendar</h3>
+            <table id="calendar_table" border="1">
                 <thead>
                     <tr>
-                        <th>Product Name</th>
-                        <th>Product Data</th>
+                        <th>Day of Week</th>
+                        <th>Scripture</th>
                     </tr>
                 </thead>
-                <tbody id="shopping_cart_data">
+                <tbody id="calendar_data">
 
                 </tbody>
             </table>
         </div>
-        <div id="add_to_shopping_cart">
+        <div id="add_to_calendar">
             <fieldset>
-                <label for="product_name">Product Name: </label>
-                <input name="product_name" type="text" id="product_name">
+                <label for="day_of_week">Day of Week: </label>
+                <input name="day_of_week" type="text" id="day_of_week">
             </fieldset>
 
             <fieldset>
-                <label for="product_price">Product Price: </label>
-                <input name="product_price" type="text" id="product_price">
+                <label for="scripture">Scripture: </label>
+                <input name="scripture" type="text" id="scripture">
             </fieldset>
 
-            <button onclick="addToCart()">Add To Cart</button>
+            <button onclick="addToCalendar()">Add To Calendar</button>
         </div>
         <pre id="storage_code_snippet"></pre>
     </body>

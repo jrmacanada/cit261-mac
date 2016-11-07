@@ -1,16 +1,16 @@
-function addToCart() {
+function addToCalendar() {
     var output = document.getElementById("storage_code_snippet");
-    var key = document.getElementById("product_name").value;
-    var val = document.getElementById("product_price").value;
+    var key = document.getElementById("day_of_week").value;
+    var val = document.getElementById("scripture").value;
 
     localStorage.setItem(key, val);
-    populateShoppingCart(localStorage);
+    populateCalendar(localStorage);
 
     output.innerHTML = JSON.stringify(localStorage);
 }
 
-function populateShoppingCart(json) {
-    var tbody = document.getElementById('shopping_cart_data');
+function populateCalendar(json) {
+    var tbody = document.getElementById('calendar_data');
     tbody.innerHTML = "";
     
     for (var prop in json) {
@@ -28,4 +28,4 @@ function populateShoppingCart(json) {
     }
 }
 
-populateShoppingCart(localStorage);
+populateCalendar(localStorage);
