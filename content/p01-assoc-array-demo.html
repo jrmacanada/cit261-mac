@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Associative Array Example Function</h1>
+<p>The onclick button creates an associative array of New Testament books and 
+    randomly selects one book and chapter to read on the day of the week identified 
+    by a SWITCH conditional statement, and then displays all results.</p>
+
+<p>Click below to see what gospel book and chapter you should read today.</p>
+<button onclick="myReading()">Pick what to read</button>
+<p id="demo"></p>
+
+<script>
+function myReading() {   
+    var bible = [];
+    bible[0] = "Matthew";
+    bible[1] = "Mark";
+    bible[2] = "Luke";
+    bible[3] = "John";
+    bible[4] = "Acts";
+    
+        var day;
+    switch (new Date().getDay()) {
+        case 0:
+            day = "Sunday";
+            break;
+        case 1:
+            day = "Monday";
+            break;
+        case 2:
+            day = "Tuesday";
+            break;
+        case 3:
+            day = "Wednesday";
+            break;
+        case 4:
+            day = "Thursday";
+            break;
+        case 5:
+            day = "Friday";
+            break;
+        case 6:
+            day = "Saturday";
+            break;
+        default:
+            day = "Check your calendar";
+    }
+    
+    document.getElementById("demo").innerHTML = "On " + day + ", please, read New Testament book: " +
+    bible[Math.floor((Math.random() * 5))] + ", chapter #" + Math.floor((Math.random() * 20) + 1) + ".";
+}
+</script>
+
+<p>Return to JavaScript Code-1 page, click to <a href="../content/p01--js-code.html" title="Go Back">GO BACK</a></p>
+</body>
+</html>
