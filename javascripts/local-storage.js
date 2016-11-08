@@ -3,7 +3,7 @@ function addToCalendar() {
     var key = document.getElementById("day_of_week").value;
     var val = document.getElementById("scripture").value;
 
-    localStorage.setData(key, val);
+    localStorage.setItem(key, val);
     populateCalendar(localStorage);
 
     output.innerHTML = JSON.stringify(localStorage);
