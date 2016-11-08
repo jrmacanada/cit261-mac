@@ -28,4 +28,9 @@ function populateCalendar(json) {
     }
 }
 
+function clearCalendar() {
+    localStorage.clear();
+    window.location.reload(true);  
+}
+
 populateCalendar(localStorage);
