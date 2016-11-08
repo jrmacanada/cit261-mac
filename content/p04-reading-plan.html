@@ -33,8 +33,8 @@
             <table id="calendar_table" border="1">
                 <thead>
                     <tr>
-                        <th>Day of Week</th>
-                        <th>Scripture</th>
+                        <th>Day of the Week</th>
+                        <th>Scripture Reading</th>
                     </tr>
                 </thead>
                 <tbody id="calendar_data">
@@ -44,19 +44,19 @@
         </div>
         <div id="add_to_calendar">
             <fieldset>
-                <label for="day_of_week">Day of Week: </label>
+                <label for="day_of_week">Enter Day: </label>
                 <input name="day_of_week" type="text" id="day_of_week">
             </fieldset>
 
             <fieldset>
-                <label for="scripture">Scripture: </label>
+                <label for="scripture">Enter Scripture: </label>
                 <input name="scripture" type="text" id="scripture">
             </fieldset>
 
             <button onclick="addToCalendar()">Add To Calendar</button>
             <button onclick="clearCalendar()">Clear Calendar</button>
 
-            <p>Real-time JSON output to check inputs</p>
+            <p>Real-time JSON output to verify inputs.</p>
         </div>
         <pre id="storage_code_snippet"></pre>
     </body>
