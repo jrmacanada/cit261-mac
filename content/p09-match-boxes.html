@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.droptarget {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+.droptarget1 {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    background-color: red
+}
+.droptarget2 {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    background-color: yellow
+}
+.droptarget3 {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    background-color: green
+}
+</style>
+</head>
+<body>
+
+<p>Click, hold, and drag the descriptive word into the correctly colored box.</p>
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">GREEN</p>
+</div>
+<div class="droptarget1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<p style="clear:both;">Place the word GREEN in the green box.</p>
+
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">RED</p>
+</div>
+<div class="droptarget2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<p style="clear:both;">Place the word RED in the red box.</p>
+
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">YELLOW</p>
+</div>
+<div class="droptarget3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<p style="clear:both;">Place the word YELLOW in the yellow box.</p>
+
+<p><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
+
+<p id="demo"></p>
+
+<script>
+// Drag and drop RED
+function dragStart(event) {
+    event.dataTransfer.setData("Text", event.target.id);
+    document.getElementById("demo").innerHTML = "Started to drag RED.";
+}
+
+function dragEnd(event) {
+    document.getElementById("demo").innerHTML = "Finished dragging RED.";
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+}
+/*
+// Drag and drop YELLOW
+function dragStart(event) {
+    event.dataTransfer.setData("Text", event.target.id);
+    document.getElementById("demo").innerHTML = "Started to drag YELLOW";
+}
+
+function dragEnd(event) {
+    document.getElementById("demo").innerHTML = "Finished dragging YELLOWt.";
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+}
+
+// Drag and drop GREEN
+function dragStart(event) {
+    event.dataTransfer.setData("Text", event.target.id);
+    document.getElementById("demo").innerHTML = "Started to drag GREEN";
+}
+
+function dragEnd(event) {
+    document.getElementById("demo").innerHTML = "Finished dragging GREEN.";
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+}
+*/
+</script>
+
+</body>
+</html>
+
+
+
