@@ -43,26 +43,26 @@
 
 <p>Click, hold, and drag the descriptive word into the correctly colored box.</p>
 
-<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">GREEN</p>
+<div class="droptarget" ondrop="drop3(event)" ondragover="allowDrop3(event)">
+  <p ondragstart="dragStart3(event)" ondragend="dragEnd3(event)" draggable="true" id="dragtarget">GREEN</p>
 </div>
-<div class="droptarget1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="droptarget1" ondrop="drop1(event)" ondragover="allowDrop1(event)"></div>
 
 <p style="clear:both;">Place the word GREEN in the green box.</p>
 
 
-<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">RED</p>
+<div class="droptarget" ondrop="drop1(event)" ondragover="allowDrop1(event)">
+  <p ondragstart="dragStart1(event)" ondragend="dragEnd1(event)" draggable="true" id="dragtarget">RED</p>
 </div>
-<div class="droptarget2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="droptarget2" ondrop="drop2(event)" ondragover="allowDrop2(event)"></div>
 
 <p style="clear:both;">Place the word RED in the red box.</p>
 
 
-<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">YELLOW</p>
+<div class="droptarget" ondrop="drop2(event)" ondragover="allowDrop2(event)">
+  <p ondragstart="dragStart2(event)" ondragend="dragEnd2(event)" draggable="true" id="dragtarget">YELLOW</p>
 </div>
-<div class="droptarget3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="droptarget3" ondrop="drop3(event)" ondragover="allowDrop3(event)"></div>
 
 <p style="clear:both;">Place the word YELLOW in the yellow box.</p>
 
@@ -72,66 +72,68 @@
 
 <script>
 // Drag and drop RED
-function dragStart(event) {
+function dragStart1(event) {
     event.dataTransfer.setData("Text", event.target.id);
     document.getElementById("demo").innerHTML = "Started to drag RED.";
 }
 
-function dragEnd(event) {
+function dragEnd1(event) {
     document.getElementById("demo").innerHTML = "Finished dragging RED.";
 }
 
-function allowDrop(event) {
+function allowDrop1(event) {
     event.preventDefault();
 }
 
-function drop(event) {
+function drop1(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("Text");
     event.target.appendChild(document.getElementById(data));
 }
-/*
+
 // Drag and drop YELLOW
-function dragStart(event) {
+function dragStart2(event) {
     event.dataTransfer.setData("Text", event.target.id);
     document.getElementById("demo").innerHTML = "Started to drag YELLOW";
 }
 
-function dragEnd(event) {
+function dragEnd2(event) {
     document.getElementById("demo").innerHTML = "Finished dragging YELLOWt.";
 }
 
-function allowDrop(event) {
+function allowDrop2(event) {
     event.preventDefault();
 }
 
-function drop(event) {
+function drop2(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("Text");
     event.target.appendChild(document.getElementById(data));
 }
 
 // Drag and drop GREEN
-function dragStart(event) {
+function dragStart3(event) {
     event.dataTransfer.setData("Text", event.target.id);
     document.getElementById("demo").innerHTML = "Started to drag GREEN";
 }
 
-function dragEnd(event) {
+function dragEnd3(event) {
     document.getElementById("demo").innerHTML = "Finished dragging GREEN.";
 }
 
-function allowDrop(event) {
+function allowDrop3(event) {
     event.preventDefault();
 }
 
-function drop(event) {
+function drop3(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("Text");
     event.target.appendChild(document.getElementById(data));
 }
-*/
+
 </script>
+
+<p>Return to JavaScript Event Applications page, click to <a href="../content/p09--js-events.html" title="Go Back">GO BACK</a></p>
 
 </body>
 </html>
