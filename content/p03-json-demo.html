@@ -51,13 +51,16 @@
     </head>
     <body>
         <h1>JSON Utility</h1>
+        <h3>Data extracted from JSON string.</h3>
+        
         <p id="demo"></p>
         
     <script>
-// THIRD bunch of code
-        var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
+// THIRD attempt at code
+// Failed to load; transfered directly
         var test = '{"coord":{"lon":-74.01,"lat":40.71},\n\
                     "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}],\n\
+                    "description":"clear sky",\n\
                     "base":"stations",\n\
                     "main":{"temp":280.35,"pressure":1018,"humidity":36,"temp_min":273.15,"temp_max":287.15},\n\
                     "visibility":"16093 meters",\n\
@@ -66,21 +69,25 @@
                     "sys":{"type":1,"id":1969,"message":0.1892,"country":"US","sunrise":1479123740,"sunset":1479159501},\n\
                     "id":5128581,"name":"New York","cod":200}';
     
-//       var weather;
- //       var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
- //          '&APPID=7bbbb47522848e8b9c26ba35c226c734';
- //           weather = loadJSON(url);
+//        var climate;
+//        var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
+//           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+//        var climate = loadJSON(url);
         var obj = JSON.parse(test);
 
         document.getElementById("demo").innerHTML =
-        obj.name + "<br>" +
-        obj.weather.description + "<br>" +
+        "Location: " +
+        obj.name + "<br>" + 
+        "Forecast: " +
+        obj.description + "<br>" + 
+        "Visibility: " +
         obj.visibility;
 
     </script>
 
-        <p>To see the results of the script (reproduced below) open the console.</p>
+        <p>Code development provided below.</p>
         <pre>
+        // FIRST bunch of code...
         var weather;
         function preload() {
           var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
@@ -99,6 +106,44 @@
           fill(0, humidity); // use the humidity value to set the alpha
           ellipse(width/2, height/2, 50, 50);
         }
+
+        // SECOND bunch of code...
+        function setup() {
+          noLoop();
+          var url = 'http://api.openweathermap.org/data/2.5/weather?q=NewYork'+
+           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+          loadJSON(url, drawWeather);
+        }
+
+        function draw() {
+          background(200);
+        }
+
+        function drawWeather(weather) {
+          // get the humidity value out of the loaded JSON
+          var humidity = weather.main.humidity;
+          fill(0, humidity); // use the humidity value to set the alpha
+          ellipse(width/2, height/2, 50, 50);
+        }
+        // Final working code...
+        var test = '{"coord":{"lon":-74.01,"lat":40.71},\n\
+                    "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}],\n\
+                    "description":"clear sky",\n\
+                    "base":"stations",\n\
+                    "main":{"temp":280.35,"pressure":1018,"humidity":36,"temp_min":273.15,"temp_max":287.15},\n\
+                    "visibility":"16093 meters",\n\
+                    "wind":{"speed":2.1,"deg":260},\n\
+                    "clouds":{"all":1},"dt":1479089700,\n\
+                    "sys":{"type":1,"id":1969,"message":0.1892,"country":"US","sunrise":1479123740,"sunset":1479159501},\n\
+                    "id":5128581,"name":"New York","cod":200}';
+    
+    // JSON string parsed for display above...
+        var obj = JSON.parse(test);
+
+        document.getElementById("demo").innerHTML =
+        "Location: " + obj.name +
+        "Forecast: " + obj.description +
+        "Visibility: " + obj.visibility;
         </pre>
         
 <p>Return to JSON Utility page, click to <a href="../content/p03--json.html" title="Go Back">GO BACK</a></p>
