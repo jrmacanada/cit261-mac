@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS3 Manipulation</title>
+    <style>
+        .trump {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="intro">CSS3 Manipulation</h1>
+
+<!--  Required label reference to work here -->
+    <p>My interview with...</p>
+    <h3 id="demo">Donald Trump</h3>
+    
+    <p class="gone">Click on the buttons to see answers to the questions.</p>
+
+<!--  change element color -->
+    <p class="gone">Q: What is your favorite color?</p>
+    <button class="gone" type="button"
+    onclick="document.getElementById('demo').style.color = 'orange'">
+    A: Turn me ORANGE</button>
+
+<!--  highlight element background -->
+    <p class="gone">Q: What did President Obama make you feel like?</p>
+    <button class="gone" type="button"
+    onclick="document.getElementById('demo').style.backgroundColor = 'green'">
+    A: Green with envy</button>
+
+<!--  center-align element -->
+    <p class="gone">Q: Will you hold to your Alt-Right positions?</p>
+    <button class="gone" type="button"
+    onclick="document.getElementById('demo').style.textAlign = 'center'">
+    A: Center my positions</button>
+
+<!--  resize element -->
+    <p class="gone">Q: If you had one wish, what would it be?</p>
+    <button class="gone" type="button"
+    onclick="document.getElementById('demo').style.fontSize = '40px'">
+    A: Make my hands bigger</button>
+
+<!--  hide element -->
+    <p class="gone">Q: Where will you be in four years?</p>
+    <button class="gone" type="button"
+    onclick="document.getElementById('demo').style.visibility = 'hidden'">
+    A: Click to find out</button>
+    
+<!--  show element -->
+<p class="gone">Q: And what about your brand?</p>
+    <button class="gone" type="button"
+    onclick="
+             document.getElementById('brand').style.visibility = 'visible';
+             document.getElementById('brand').style.fontSize = '80px';
+             document.getElementById('brand').style.textAlign = 'center';
+             document.getElementById('brand').style.backgroundColor = 'black';
+             document.getElementById('brand').style.color = 'gold';
+             document.getElementById('demo').style.visibility = 'hidden'
+ //            document.getElementByClassName('gone').style.visibility = 'hidden'
+            ">
+    A: Click to find out</button>
+    
+    <p class="trump" id="brand">TRASH</p>
+    
+    <p>Return to CSS3 Manipulation page, click to <a href="../content/p07--css3-manipulation.html" title="Go Back">GO BACK</a></p>
+
+</body>
+</html>
+
+
