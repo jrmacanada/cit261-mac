@@ -60,21 +60,21 @@
                     "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}],\n\
                     "base":"stations",\n\
                     "main":{"temp":280.35,"pressure":1018,"humidity":36,"temp_min":273.15,"temp_max":287.15},\n\
-                    "visibility":16093,\n\
+                    "visibility":"16093 meters",\n\
                     "wind":{"speed":2.1,"deg":260},\n\
                     "clouds":{"all":1},"dt":1479089700,\n\
                     "sys":{"type":1,"id":1969,"message":0.1892,"country":"US","sunrise":1479123740,"sunset":1479159501},\n\
                     "id":5128581,"name":"New York","cod":200}';
     
-        var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
-           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+//        var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
+//           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
 //            weather = loadJSON(url);
-        var obj = JSON.parse(text);
+        var obj = JSON.parse(test);
 
         document.getElementById("demo").innerHTML =
         obj.name + "<br>" +
-        obj.street + "<br>" +
-        obj.phone;
+        obj.weather.description + "<br>" +
+        obj.visibility;
 
     </script>
 
