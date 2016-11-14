@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JSON Utility</title>
+
+    <script>
+// FIRST bunch of code
+var weather;
+function preload() {
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
+   '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+  weather = loadJSON(url);
+}
+
+function setup() {
+  noLoop();
+}
+
+function draw() {
+  background(200);
+  // get the humidity value out of the loaded JSON
+  var humidity = weather.main.humidity;
+  fill(0, humidity); // use the humidity value to set the alpha
+  ellipse(width/2, height/2, 50, 50);
+}
+
+// SECOND bunch of code
+function setup() {
+  noLoop();
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q=NewYork'+
+   '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+  loadJSON(url, drawWeather);
+}
+
+function draw() {
+  background(200);
+}
+
+function drawWeather(weather) {
+  // get the humidity value out of the loaded JSON
+  var humidity = weather.main.humidity;
+  fill(0, humidity); // use the humidity value to set the alpha
+  ellipse(width/2, height/2, 50, 50);
+}
+// 50x50 ellipse that changes from black to white depending on the current humidity
+
+    </script>
+
+    </head>
+    <body>
+        <h1>JSON Utility</h1>
+        <p>To see the results of the script (reproduced below) open the console.</p>
+        <pre>
+        var weather;
+        function preload() {
+          var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
+           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+          weather = loadJSON(url);
+        }
+
+        function setup() {
+          noLoop();
+        }
+
+        function draw() {
+          background(200);
+          // get the humidity value out of the loaded JSON
+          var humidity = weather.main.humidity;
+          fill(0, humidity); // use the humidity value to set the alpha
+          ellipse(width/2, height/2, 50, 50);
+        }
+        </pre>
+
+<p>Return to JSON Utility page, click to <a href="../content/p03--json.html" title="Go Back">GO BACK</a></p>
+
+    </body>
+</html>
