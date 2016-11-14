@@ -6,50 +6,78 @@
 
     <script>
 // FIRST bunch of code
-var weather;
-function preload() {
-  var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
-   '&APPID=7bbbb47522848e8b9c26ba35c226c734';
-  weather = loadJSON(url);
-}
+        var weather;
+        function preload() {
+          var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
+           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+          weather = loadJSON(url);
+        }
 
-function setup() {
-  noLoop();
-}
+        function setup() {
+          noLoop();
+        }
 
-function draw() {
-  background(200);
-  // get the humidity value out of the loaded JSON
-  var humidity = weather.main.humidity;
-  fill(0, humidity); // use the humidity value to set the alpha
-  ellipse(width/2, height/2, 50, 50);
-}
+        function draw() {
+          background(200);
+          // get the humidity value out of the loaded JSON
+          var humidity = weather.main.humidity;
+          fill(0, humidity); // use the humidity value to set the alpha
+          ellipse(width/2, height/2, 50, 50);
+        }
 
 // SECOND bunch of code
-function setup() {
-  noLoop();
-  var url = 'http://api.openweathermap.org/data/2.5/weather?q=NewYork'+
-   '&APPID=7bbbb47522848e8b9c26ba35c226c734';
-  loadJSON(url, drawWeather);
-}
+        function setup() {
+          noLoop();
+          var url = 'http://api.openweathermap.org/data/2.5/weather?q=NewYork'+
+           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+          loadJSON(url, drawWeather);
+        }
 
-function draw() {
-  background(200);
-}
+        function draw() {
+          background(200);
+        }
 
-function drawWeather(weather) {
-  // get the humidity value out of the loaded JSON
-  var humidity = weather.main.humidity;
-  fill(0, humidity); // use the humidity value to set the alpha
-  ellipse(width/2, height/2, 50, 50);
-}
+        function drawWeather(weather) {
+          // get the humidity value out of the loaded JSON
+          var humidity = weather.main.humidity;
+          fill(0, humidity); // use the humidity value to set the alpha
+          ellipse(width/2, height/2, 50, 50);
+        }
 // 50x50 ellipse that changes from black to white depending on the current humidity
+
 
     </script>
 
     </head>
     <body>
         <h1>JSON Utility</h1>
+        <p id="demo"></p>
+        
+    <script>
+// THIRD bunch of code
+        var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
+        var test = '{"coord":{"lon":-74.01,"lat":40.71},\n\
+                    "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}],\n\
+                    "base":"stations",\n\
+                    "main":{"temp":280.35,"pressure":1018,"humidity":36,"temp_min":273.15,"temp_max":287.15},\n\
+                    "visibility":16093,\n\
+                    "wind":{"speed":2.1,"deg":260},\n\
+                    "clouds":{"all":1},"dt":1479089700,\n\
+                    "sys":{"type":1,"id":1969,"message":0.1892,"country":"US","sunrise":1479123740,"sunset":1479159501},\n\
+                    "id":5128581,"name":"New York","cod":200}';
+    
+        var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,UK'+
+           '&APPID=7bbbb47522848e8b9c26ba35c226c734';
+//            weather = loadJSON(url);
+        var obj = JSON.parse(text);
+
+        document.getElementById("demo").innerHTML =
+        obj.name + "<br>" +
+        obj.street + "<br>" +
+        obj.phone;
+
+    </script>
+
         <p>To see the results of the script (reproduced below) open the console.</p>
         <pre>
         var weather;
@@ -71,7 +99,7 @@ function drawWeather(weather) {
           ellipse(width/2, height/2, 50, 50);
         }
         </pre>
-
+        
 <p>Return to JSON Utility page, click to <a href="../content/p03--json.html" title="Go Back">GO BACK</a></p>
 
     </body>
