@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Object Inheritance Demo</title>
+
+    <script>
+// Create Parent Class:
+        var ClassA = function() {
+            this.name = "generation-A";
+            this.surname = "I am the parent.";
+        };
+
+// Instantiate using the "new" keyword:
+        var a = new ClassA();
+        
+        ClassA.prototype.print = function() {
+            console.log(this.name);
+            console.log(this.surname);
+        };
+
+        a.print();
+
+// Create “inheritance” between classes:
+        var inheritsFrom = function (child, parent) {
+            child.prototype = Object.create(parent.prototype);
+        };
+
+// Add tier-1 Child Class:
+        var ClassB = function() {
+            this.name = "generation-B";
+            this.surname = "I am the child.";
+        };
+
+        inheritsFrom(ClassB, ClassA);
+
+// Override the print function, carries over to next class:
+        ClassB.prototype.print = function() {
+            ClassA.prototype.print.call(this);
+            console.log("I was born of goodly parents.");
+        };
+        
+        var b = new ClassB();
+        b.print();
+
+// Add tier-2 Child Class:
+        var ClassC = function () {
+            this.name = "generation-C";
+            this.surname = "I am the grandchild.";
+        };
+
+        inheritsFrom(ClassC, ClassB);
+
+        ClassC.prototype.print = function () {
+            ClassB.prototype.print.call(this);
+            console.log("We practice family home evenings.");
+        };
+
+        var c = new ClassC();
+        c.print();
+        
+// Add tier-3 Child Class:
+        var ClassD = function () {
+            this.name = "generation-D";
+            this.surname = "I am the great-grandchild.";
+        };
+
+        inheritsFrom(ClassD, ClassC);
+
+        ClassD.prototype.print = function () {
+            ClassC.prototype.print.call(this);
+            console.log("This is a blessed family!");
+        };
+
+        var d = new ClassD();
+        d.print();
+    </script>
+
+    </head>
+    <body>
+        <h1>Object Inheritance Demo</h1>
+        <p>To see the results of the script (reproduced below) open the console.</p>
+        <pre>
+// Create Parent Class:
+        var ClassA = function() {
+            this.name = "generation-A";
+            this.surname = "I am the parent.";
+        };
+
+// Instantiate using the "new" keyword:
+        var a = new ClassA();
+        
+        ClassA.prototype.print = function() {
+            console.log(this.name);
+            console.log(this.surname);
+        };
+
+        a.print();
+
+// Create “inheritance” between classes:
+        var inheritsFrom = function (child, parent) {
+            child.prototype = Object.create(parent.prototype);
+        };
+
+// Add tier-1 Child Class:
+        var ClassB = function() {
+            this.name = "generation-B";
+            this.surname = "I am the child.";
+        };
+
+        inheritsFrom(ClassB, ClassA);
+
+// Print this generations motto:
+        ClassB.prototype.print = function() {
+            ClassA.prototype.print.call(this);
+            console.log("I was born of goodly parents.");
+        };
+        
+        var b = new ClassB();
+        b.print();
+
+// Add tier-2 Child Class:
+        var ClassC = function () {
+            this.name = "generation-C";
+            this.surname = "I am the grandchild.";
+        };
+
+        inheritsFrom(ClassC, ClassB);
+
+// Print new motto and inherit last generation's motto:
+        ClassC.prototype.print = function () {
+            ClassB.prototype.print.call(this);
+            console.log("We practice family home evenings.");
+        };
+
+        var c = new ClassC();
+        c.print();
+        
+// Add tier-3 Child Class:
+        var ClassD = function () {
+            this.name = "generation-D";
+            this.surname = "I am the great-grandchild.";
+        };
+
+        inheritsFrom(ClassD, ClassC);
+
+// Print new motto and inherit last generation's motto:
+        ClassD.prototype.print = function () {
+            ClassC.prototype.print.call(this);
+            console.log("This family is blessed!");
+        };
+
+        var d = new ClassD();
+        d.print();
+        </pre>
+
+    <p id="demo"></p>
+
+    </body>
+</html>
