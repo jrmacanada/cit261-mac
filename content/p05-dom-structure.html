@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DOM Demonstration</title>
+    <style>
+        .trump {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="intro">DOM Demonstration</h1>
+
+<!--  Required label reference to work here -->
+    <p>My interview with...</p>
+    <p class="trump" id="brand">TRASH</p>
+    <p class="trump" id="here">Return to DOM Demonstration page, click to <a href="../content/p05--dom.html" title="Go Back">GO BACK</a></p>
+    <h3 id="demo">Donald Trump</h3>
+<form id="done">  
+    <p >Click on the buttons to see answers to the questions.</p>
+
+<!--  change element color -->
+    <p >Q: What is your favorite color?</p>
+    <button  type="button"
+    onclick="document.getElementByClass('demo').style.color = 'orange'">
+    Action Dismantled</button>
+
+<!--  highlight element background -->
+    <p >Q: What did President Obama make you feel like?</p>
+    <button  type="button"
+    onclick="document.getElementByClass('demo').style.backgroundColor = 'green'">
+    Action Dismantled</button>
+
+<!--  center-align element -->
+    <p >Q: Will you hold to your Alt-Right positions?</p>
+    <button  type="button"
+    onclick="document.getElementByClass('demo').style.textAlign = 'center'">
+    Action Dismantled</button>
+
+<!--  resize element -->
+    <p >Q: If you had one wish, what would it be?</p>
+    <button  type="button"
+    onclick="document.getElementByClass('demo').style.fontSize = '40px'">
+    Action Dismantled</button>
+
+<!--  hide element -->
+    <p >Q: Where will you be in four years?</p>
+    <button  type="button"
+    onclick="document.getElementByClass('demo').style.visibility = 'hidden'">
+    Action Dismantled</button>
+    
+<!--  show element -->
+<p >Q: And what about your brand?</p>
+    <button  type="button"
+    onclick="
+             document.getElementByClass('brand').style.visibility = 'visible';
+             document.getElementByClass('brand').style.fontSize = '80px';
+             document.getElementByClass('brand').style.textAlign = 'center';
+             document.getElementByClass('brand').style.backgroundColor = 'black';
+             document.getElementByClass('brand').style.color = 'gold';
+             document.getElementByClass('demo').style.visibility = 'hidden';
+             document.getElementByClass('done').style.visibility = 'hidden';
+             document.getElementByClass('gone').style.visibility = 'hidden';
+             document.getElementByClass('here').style.visibility = 'visible';
+            ">
+    Action Dismantled</button>
+</form> 
+
+    <p id="gone">Return to DOM Demonstration page, click to <a href="../content/p05--dom.html" title="Go Back">GO BACK</a></p>
+
+<!-- Show DOM document element structure -->
+<script>
+alert(document.documentElement.innerHTML);
+</script>
+
+<!-- Show DOM doc.body element structure only -->
+<script>
+//    write(document.body.innerHTML);
+//    document.write(document.body.innerHTML);
+//    document.writeln(document.body.innerHTML);
+</script>
+
+<button onclick="PrintElem()">Click to show DOM structure</button>
+<!--
+<script>
+function myFunction() {
+    document.open();
+    console.log(document.body.innerHTML);
+    document.close();
+}
+</script>
+-->
+<script>
+function PrintElem(elem)
+    {
+      var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>' + document.title  + '</h1>');
+        mywindow.document.write(document.getElementById(elem).innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+
+        }
+</script>
+</body>
+</html>
+
+
