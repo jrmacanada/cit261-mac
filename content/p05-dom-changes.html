@@ -13,10 +13,16 @@
 <body>
     <h1 id="intro">DOM Manipulation</h1>
     
-    <button onclick="removeFirst()">Click to remove 1st list item</button>
-    <button onclick="changeChild()">Click to modify middle list item</button>
-    <button onclick="makeNewItem()">Click to create a 4th list item</button>
-    <button onclick="moveNew2Top()">Click to move 4th item to top</button>
+    <button onclick="removeFirst()">Click twice to remove 1st item from list</button>
+    <br />
+    <br />
+    <button onclick="addLast()">Click to add item to list</button>
+    <br />
+    <br />
+    <button onclick="makeElement()">Click to create a new BUTTON element</button>
+    <br />
+    <br />
+    <button onclick="moveNew2Top()">Click to move last item to top</button>
     
 <!--  Required label reference to work here -->
     <p>My interview with...</p>
@@ -26,7 +32,7 @@
 <form id="done">  
     <p >Click on the buttons to see answers to the questions.</p>
     <p>START LIST OF QUESTIONS</p>
-<ul id="mylist">
+<ul id="myList">
     <li>
 <!--  change element color -->
     <p>Q: What is your favorite color?</p>
@@ -89,22 +95,30 @@
         list.removeChild(list.childNodes[0]);           // Remove <ul>'s first child node (index 0)
     }
 
-    function changeChild() {
-        document.open();
-        console.log(document.body.innerHTML);
-        document.close();
+    function addLast() {
+        var node = document.createElement("LI");                 // Create a <li> node
+        var textnode = document.createTextNode("NEW List Item"); // Create a text node
+        node.appendChild(textnode);                              // Append the text to <li>
+        document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
     }
 
-    function makeNewItem() {
-        document.open();
-        console.log(document.body.innerHTML);
-        document.close();
+    function makeElement() {
+        var btn = document.createElement("BUTTON");        // Create a <button> element
+        var t = document.createTextNode("New BUTTON");       // Create a text node
+        btn.appendChild(t);                                // Append the text to <button>
+        document.body.appendChild(btn);                    // Append <button> to <body>
     }
 
     function moveNew2Top() {
-        document.open();
-        console.log(document.body.innerHTML);
-        document.close();
+        var list = document.getElementById("myList");   // Get the <ul> element with id="myList"    
+        list.removeChild(list.childNodes[4]);           // Remove <ul>'s last child node (index 4)
+        
+        var newItem = document.createElement("LI");       // Create a <li> node
+        var textnode = document.createTextNode("MOVED List Item");  // Create a text node
+        newItem.appendChild(textnode);                    // Append the text to <li>
+
+        var move = document.getElementById("myList");     // Get the <ul> element to insert a new node
+        move.insertBefore(newItem, move.childNodes[0]);   // Insert <li> before the first child of <ul>
     }
 </script> 
 
