@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>XMLHTTPRequest-JSON Exchange</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XMLHTTPRequest-JSON-Ajax Exchanges</title>
     <style>
-
+        <link rel="stylesheet" href="../stylesheets/css/main.css">
     </style>
 </head>
 
 <body>
-    <h1 id="intro">XMLHTTPRequest-JSON Exchange</h1>
+<div>
+    <h1 id="intro">XMLHTTPRequest-JSON-Ajax Exchanges</h1>
 
     <input id="Button1" type="button" value="Show Books" onclick="getBooks() " />
     
+    <script>
+// w3schools attempt (failed)
+//    var myReq = new ActiveXObject("Microsoft.XMLHTTP");
+//    var myReq = new XMLHttpRequest;
+    
+//    var myReq = new XMLHttpRequest();
+    function getBooks() {
+        var myReq = new ActiveXObject("Microsoft.XMLHTTP");
+        var myReq = new XMLHttpRequest;
+    
+        var myReq = new XMLHttpRequest();
+        if (window.XMLHttpRequest)
+            {
+                var url = "http://www.w3schools.com/xsl/books.xml"
+                myReq.open("GET", url, false)
+                myReq.send();
+                alert(myReq.responseXML.xml);          
+            }
+     }
+     
+    </script>
+</div>  
+    
+<div>    
     <h1>Ajax Extraction of this Site</h1>
         <button onclick="requestData('/repos/jrmacanada/cit261-mac')">Get Data</button>
         <pre>
@@ -20,7 +47,7 @@
         </pre>
 
     <script>
-        function ajax(url, callback) {
+    function ajax(url, callback) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function(){
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
@@ -40,74 +67,68 @@
         });
     }       
     </script>
-    
-    
-<script>
-// w3schools attempt (failed)
-//    var myReq = new ActiveXObject("Microsoft.XMLHTTP");
-//    var myReq = new XMLHttpRequest;
-    
-//    var myReq = new XMLHttpRequest();
-    function getBooks()
-    {   var myReq = new ActiveXObject("Microsoft.XMLHTTP");
-        var myReq = new XMLHttpRequest;
-    
-        var myReq = new XMLHttpRequest();
-        if (window.XMLHttpRequest)
-            {
-                var url = "http://www.w3schools.com/xsl/books.xml"
-                myReq.open("GET", url, false)
-                myReq.send();
-                alert(myReq.responseXML.xml);          
+</div>    
+
+ <div class="content">
+    <h1>Find Music Artists</h1>
+        <input onkeyup="get_artists(this.value)" type="text">
+        
+    <script>
+    function ajax_request(url, request_type, callback) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                callback(xmlhttp.responseText);
+            } 
+        }
+        xmlhttp.open(request_type, url, true);
+        xmlhttp.send();
+    } 
+    </script>
+
+    <script>
+    var API_ENDPOINT = 'https://api.spotify.com/v1/';
+
+    function get_artists(input) {
+        if (input === '') {
+            return false;
+        }
+
+        ajax_request(API_ENDPOINT + 'search?q=' + encodeURIComponent(input) + '&type=artist', 'GET', function(json) {
+            var obj = JSON.parse(json);
+            var results = obj.artists.items;
+            var search_results = document.getElementById('search_results');
+            search_results.innerHTML = '';
+
+            console.log(obj);
+
+            for (var i = 0; i < results.length; i++) {
+                var artist = results[i].name;
+                var genre = results[i].genres;
+                var external_link = results[i].external_urls.spotify;
+                var image = results[i].images[0].url;
+
+                var div = document.createElement('div');
+                div.classList.add('result');
+                div.innerHTML = '<a href="' + external_link + '">' +
+                                    '<div class="result_image">' +
+                                        '<img src="' + image + '">' +
+                                    '</div>' +
+                                    '<div class="result_desc">' +
+                                        '<div>Artist: ' + artist + '</div>' +
+                                        '<div>Genre: ' + genre + '</div>' +
+                                    '</div>' +
+                                '</a>';
+                search_results.appendChild(div);
             }
-     }
-     
-</script>
-<script>
-// NOAA weather attempt (failed)
-    <?xml version="1.0" encoding="UTF-8"?>
-<current_observation>
-
-<credit>NOAA's National Weather Service</credit>
-<credit_URL>http://weather.gov/</credit_URL>
-
-<image>
-  <url>http://weather.gov/images/xml_logo.gif</url>
-  <title>NOAA's National Weather Service</title>
-  <link>http://weather.gov</link>
-</image>
-
-<location>New York/John F. Kennedy Intl Airport, NY</location>
-<station_id>KJFK</station_id>
-<latitude>40.66</latitude>
-<longitude>-73.78</longitude>
-<observation_time_rfc822>Mon, 11 Feb 2008 06:51:00 -0500 EST
-</observation_time_rfc822>
-
-<weather>A Few Clouds</weather>
-<temp_f>11</temp_f>
-<temp_c>-12</temp_c>
-<relative_humidity>36</relative_humidity>
-<wind_dir>West</wind_dir>
-<wind_degrees>280</wind_degrees>
-<wind_mph>18.4</wind_mph>
-<wind_gust_mph>29</wind_gust_mph>
-<pressure_mb>1023.6</pressure_mb>
-<pressure_in>30.23</pressure_in>
-<dewpoint_f>-11</dewpoint_f>
-<dewpoint_c>-24</dewpoint_c>
-<windchill_f>-7</windchill_f>
-<windchill_c>-22</windchill_c>
-<visibility_mi>10.00</visibility_mi>
-
-<icon_url_base>http://weather.gov/weather/images/fcicons/</icon_url_base>
-<icon_url_name>nfew.jpg</icon_url_name>
-<disclaimer_url>http://weather.gov/disclaimer.html</disclaimer_url>
-<copyright_url>http://weather.gov/disclaimer.html</copyright_url>
-
-</current_observation>
+        });
+    }
+    </script>
+    <div id="search_results"></div>
+</div>
     
-</script>
+<p>Return to XMLHTTPRequest-JSON-Ajax Exchanges page, click to <a href="../content/p08--xml-json.html" title="Go Back">GO BACK</a></p>
+
 </body>
 </html>
 
