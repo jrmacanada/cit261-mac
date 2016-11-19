@@ -13,14 +13,46 @@
 
     <input id="Button1" type="button" value="Show Books" onclick="getBooks() " />
     
+    <h1>Ajax Extraction of this Site</h1>
+        <button onclick="requestData('/repos/jrmacanada/cit261-mac')">Get Data</button>
+        <pre>
+            <div id="output"></div>
+        </pre>
+
+    <script>
+        function ajax(url, callback) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                callback(xmlhttp.responseText);
+            } else {
+                // handle the request
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
+
+    function requestData(endpoint) {
+        var root = 'https://api.github.com';
+        ajax(root + endpoint, function(data) {
+            document.getElementById('output').innerHTML = data;
+        });
+    }       
+    </script>
+    
+    
 <script>
 // w3schools attempt (failed)
-    var myReq = new ActiveXObject("Microsoft.XMLHTTP");
-    var myReq = new XMLHttpRequest;
+//    var myReq = new ActiveXObject("Microsoft.XMLHTTP");
+//    var myReq = new XMLHttpRequest;
     
-    var myReq = new XMLHttpRequest();
+//    var myReq = new XMLHttpRequest();
     function getBooks()
-    {
+    {   var myReq = new ActiveXObject("Microsoft.XMLHTTP");
+        var myReq = new XMLHttpRequest;
+    
+        var myReq = new XMLHttpRequest();
         if (window.XMLHttpRequest)
             {
                 var url = "http://www.w3schools.com/xsl/books.xml"
